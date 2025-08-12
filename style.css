@@ -64,3 +64,66 @@ body {
     text-align: center;
     margin: 0 0 20px;
 }
+
+#board {   
+    height: 600px;
+    width: 400px;
+}
+
+.win {
+    color: hsl(120, 100%, 40%);
+}
+
+.lose {
+    color: hsl(0, 100%, 50%);
+}
+
+.invalid {
+    color: hsl(0, 100%, 50%);
+}
+
+#section-1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 40px;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+#direction {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#section-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 40px;
+    gap: 20px;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    background-color: hsl(0, 0%, 0%);
+    border: 1px solid hsl(0, 0%, 50%);
+    border-radius: 5px;
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+    font-size: 1em;
+}
+
+#timer {
+        border: none;
+}
+
+button {
+    background-color: hsl(0, 0%, 0%);
+}
+
+button:hover {
+    cursor: pointer;
+}
