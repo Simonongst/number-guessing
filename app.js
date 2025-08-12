@@ -41,3 +41,17 @@ function initGame(){
     directionEl.innerHTML = '';
     directionEl.style.marginTop = '0';
 };
+
+function control() {
+    if (!controlState) {
+        initGame();
+        controlState = true;
+    } else {
+        reset();
+    }
+
+    start();
+    controlBtnEl.textContent = 'Restart';
+    generateRandomNum();
+    inputControl();
+}
