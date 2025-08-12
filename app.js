@@ -216,6 +216,40 @@ function reset(){
     startTime = 0;
     elapsedTime = 0;
     isRunning = false;
+
+    messageEl.textContent = "";
+    messageEl.classList.remove('win', 'lose', 'invalid');
+    timerEl.textContent = "00:00";
+
+    randomNumEl.forEach(el => {
+        el.textContent = '?';
+    });
+
+    const inputFields = section2El.querySelectorAll('input');
+    const checkButtons = section2El.querySelectorAll('button');
+
+    inputFields.forEach((input, index) => {
+        input.value = '';
+        if(index < 3){
+            input.disabled = false;
+            input.style.backgroundColor = 'hsl(0, 0%, 0%)';
+        } else {
+            input.disabled = true;
+            input.style.backgroundColor = 'hsl(0, 0%, 50%)';
+        }
+    });
+
+    checkButtons.forEach((button, index) => {
+        if(index < 1){
+            button.disabled = false;
+            button.style.backgroundColor = 'hsl(128, 100%, 40%)';
+            button.style.pointerEvents = 'auto';
+        } else {
+            button.disabled = true;
+            button.style.pointerEvents = 'none';
+            button.style.backgroundColor = 'hsl(0, 0%, 50%)';
+        }
+    });
 };
 
 function update(){
