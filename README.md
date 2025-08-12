@@ -31,7 +31,7 @@ I chose this project to explore modular game logic, dynamic UI updates, and intu
 
 ## Getting Started
 
-Play the game here: 
+_Play the game here:_ [Number Guessing](https://simonongst.github.io/number-guessing/)
 
 ### How to Play:
 
