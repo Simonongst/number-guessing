@@ -1,4 +1,4 @@
 #Number Guessing Game
 
-![Number Guessing - Welcome Screen](./assets/NumberGuessing-WelcomeScreen.png)
+<img src="https://github.com/Simonongst/number-guessing/blob/main/assets/NumberGuessing-WelcomeScreen.png" width="300">
 ![Number Guessing - Gameplay Screen](./assets/numberGuessing-GameplayScreen.png)
