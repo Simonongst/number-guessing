@@ -83,3 +83,25 @@ function revealRandomNumber(){
     randomNumEl[i].textContent = randomNums[i];
   };
 };
+
+function inputControl(){
+    const inputFields = section2El.querySelectorAll('input');
+    const checkButtons = section2El.querySelectorAll('button');
+    inputFields.forEach((input, index) => {
+        if(index < 3){
+            input.disabled = false;
+            checkButtons.forEach((button, index) => {
+                if(index < 1){
+                    button.disabled = false;
+                    button.style.backgroundColor = 'hsl(128, 100%, 40%)';
+                } else {
+                    button.disabled = true;
+                    button.style.pointerEvents = 'none';
+                };
+            });
+        } else {
+            input.disabled = true;
+            input.style.backgroundColor = 'hsl(0, 0%, 50%)';
+        };
+    });
+};
