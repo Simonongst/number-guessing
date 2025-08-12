@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./app.js"></script>
+    <title>Number Guessing</title>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Number Guessing</h1>
+        <h5>(Input a number between 0-9)</h5>
+
+        <div id="panel">
+            <div id="legend">
+                <p>🟩 Correct</p>
+                <p>🟥 Incorrect</p>
+                <p>🟧 Incorrect Order</p>
+            </div>
+            <div id="game-control">
+                <button id="control">Start</button>
+            </div>
+        </div>
+
+        <div id="score-board">
+            <p>High Score (Time)</p>
+            <p class="result">∞</p>
+        </div>
+
+        <div id='message' class="win lose invalid"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: hsl(0, 0%, 0%);
+    font-family: sans-serif, Helvetica, Arial;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 500px;
+    color: hsl(0, 0%, 100%);
+    font-size: 1.5em;
+}
+
+#panel {
+    display: flex;
+    margin: 40px 0;
+}
+
+#legend {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    font-size: .8em;
+}
+
+#game-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    font-size: .8em;
+}
+
+#control {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(240, 100%, 50%);
+    height: 80px;
+    width: 80px;
+    border: none;
+    border-radius: 50%;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#control:hover {
+    background-color: hsl(240, 100%, 40%);
+}
+
+#score-board {
+    text-align: center;
+    margin: 0 0 20px;
+}
