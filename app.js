@@ -194,3 +194,51 @@ function checkInput(e) {
         }
     }
 }
+
+function start(){
+    if(!isRunning){
+        startTime = Date.now() - elapsedTime;
+        timer = setInterval(update, 10);
+        isRunning = true;
+    };
+};
+
+function stop(){
+    if(isRunning){
+        clearInterval(timer);
+        elapsedTime = Date.now() - startTime;
+        isRunning = false;
+    }
+};
+
+function reset(){
+    clearInterval(timer);
+    startTime = 0;
+    elapsedTime = 0;
+    isRunning = false;
+};
+
+function update(){
+    const currentTime = Date.now();
+    elapsedTime = currentTime - startTime;
+    
+    let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
+    let seconds = Math.floor(elapsedTime / 1000 % 60);
+
+    minutes = String(minutes).padStart(2, '0');
+    seconds = String(seconds).padStart(2, '0');
+
+    timerEl.textContent = `${minutes}:${seconds}`;
+};
+
+function formatTime(time) {
+    let minutes = Math.floor(time / (1000 * 60) % 60);
+    let seconds = Math.floor(time / 1000 % 60);
+
+    minutes = String(minutes).padStart(2, '0');
+    seconds = String(seconds).padStart(2, '0');
+
+    return `${minutes}:${seconds}`;
+};
+
+controlBtnEl.addEventListener('click', control);
