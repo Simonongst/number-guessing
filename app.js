@@ -105,3 +105,92 @@ function inputControl(){
         };
     });
 };
+
+function checkInput(e) {
+    const clickedRow = e.target.dataset.row;
+    const inputsInRow = section2El.querySelectorAll(`input[data-row="${clickedRow}"]`);
+
+    let allFilled = true;
+    const guesses = [];
+
+    inputsInRow.forEach((input, index) => {
+        const value = input.value.trim();
+        const guess = parseInt(value);
+        if (value === '' || isNaN(guess)) {
+            allFilled = false;
+            messageEl.classList.remove('win', 'lose');
+            messageEl.classList.add('invalid');
+            messageEl.textContent = 'Input a number between 0-9!';
+            input.style.borderColor = 'hsl(29, 100%, 40%)';
+        } else {
+            input.style.borderColor = 'hsl(0, 0%, 50%)';
+            guesses.push(guess);
+
+            if (guess === randomNums[index]) {
+                input.style.backgroundColor = 'hsl(120, 100%, 40%)';
+            } else if (randomNums.includes(guess)) {
+                input.style.backgroundColor = 'hsl(29, 100%, 40%)';
+            } else {
+                input.style.backgroundColor = 'hsl(4, 100%, 40%)';
+            }
+        }
+    });
+
+    if (allFilled) {
+        messageEl.textContent = '';
+        messageEl.classList.remove('invalid');
+    }
+
+    if (!allFilled) return;
+
+    const isCorrect = guesses.every((num, i) => num === randomNums[i]);
+
+    if (isCorrect) {
+        stop();
+        revealRandomNumber();     
+        messageEl.classList.remove('lose', 'invalid');
+        messageEl.classList.add('win');
+        messageEl.textContent = 'Victory! You guessed them all right!';
+        
+        const finalTime = elapsedTime;
+
+        if (bestTime === null || finalTime < bestTime) {
+            bestTime = finalTime;
+            resultEl.textContent = formatTime(bestTime);
+        }
+        
+    } else {
+        const nextRow = parseInt(clickedRow) + 1;
+
+        if (nextRow >= row) {
+            stop();
+            revealRandomNumber();
+            messageEl.classList.remove('win', 'invalid');
+            messageEl.classList.add('lose');
+            messageEl.textContent = 'Game Over! Better luck next time.';
+            return;
+        }
+
+        inputsInRow.forEach(input => {
+            input.disabled = true;
+        });
+
+        e.target.disabled = true;
+        e.target.style.pointerEvents = 'none';
+        e.target.style.backgroundColor = 'hsl(0, 0%, 50%)';
+
+        const nextInputs = section2El.querySelectorAll(`input[data-row="${nextRow}"]`);
+        const nextButton = section2El.querySelector(`button[data-row="${nextRow}"]`);
+
+        nextInputs.forEach(input => {
+            input.disabled = false;
+            input.style.backgroundColor = 'hsl(0, 0%, 0%)';
+        });
+
+        if (nextButton) {
+            nextButton.disabled = false;
+            nextButton.style.pointerEvents = 'auto';
+            nextButton.style.backgroundColor = 'hsl(128, 100%, 40%)';
+        }
+    }
+}
