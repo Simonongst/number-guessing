@@ -55,3 +55,31 @@ function control() {
     generateRandomNum();
     inputControl();
 }
+
+function generateRandomNum(){
+    randomNums.length = 0;
+
+    for (let i = 0; i < col; i++) {
+        let num = Math.floor(Math.random() * 10);
+        let isDuplicate = false;
+
+        for (let j = 0; j < i; j++) {
+            if (randomNums[j] === num) {
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        if (isDuplicate) {
+            i--;
+        } else {
+            randomNums[i] = num;
+        }
+    }
+};
+
+function revealRandomNumber(){
+  for (let i = 0; i < 3; i++) {
+    randomNumEl[i].textContent = randomNums[i];
+  };
+};
