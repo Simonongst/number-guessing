@@ -32,7 +32,8 @@ I chose this project to explore modular game logic, dynamic UI updates, and intu
 ## Getting Started
 
 _Play the game here:_ [Number Guessing](https://simonongst.github.io/number-guessing/)
-_Planning materials:_ [Planning Materials]()
+<br/>
+_Planning materials:_ [Planning Materials](https://github.com/Simonongst/number-guessing/blob/main/Planning-Materials.pdf)
 
 ### How to Play:
 
