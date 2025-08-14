@@ -1,11 +1,15 @@
-const randomNums = [];
+const randomNums = []; // Stores randomly generated numbers
 
-let bestTime = null;
-let controlState = false;
+let bestTime = null; // Tracks the shortest time taken to win
+let controlState = false; // Check game initialize
+
+// Timer
 let timer = null;
 let startTime = 0;
 let elapsedTime = 0;
 let isRunning = false;
+
+// Game grid dimensions
 let row = 5;
 let col = 3;
 
@@ -19,6 +23,7 @@ const messageEl = document.querySelector('#message');
 const resultEl = document.querySelector('.result');
 const directionEl = document.querySelector('#direction');
 
+// Creates input fields and "Check" buttons for each row dynamically
 function initGame(){
     for(let i = 0; i < row; i++){
         for(let j = 0; j < col; j++){
@@ -38,10 +43,12 @@ function initGame(){
         section2El.appendChild(checkBtn);
     };
 
+    // Clear direction text and reset margin
     directionEl.innerHTML = '';
     directionEl.style.marginTop = '0';
 };
 
+// Handles start/restart button
 function control() {
     if (!controlState) {
         initGame();
@@ -56,6 +63,7 @@ function control() {
     inputControl();
 }
 
+// Generates unique number between 0-9 for each tile, no duplication
 function generateRandomNum(){
     randomNums.length = 0;
 
@@ -78,12 +86,14 @@ function generateRandomNum(){
     }
 };
 
+// Reveal the numbers after win/loss
 function revealRandomNumber(){
   for (let i = 0; i < 3; i++) {
     randomNumEl[i].textContent = randomNums[i];
   };
 };
 
+// Enables/disables input fields and buttons based on current game state
 function inputControl(){
     const inputFields = section2El.querySelectorAll('input');
     const checkButtons = section2El.querySelectorAll('button');
@@ -106,6 +116,7 @@ function inputControl(){
     });
 };
 
+// Validates user input. Checks for correctness and provides colour feedback
 function checkInput(e) {
     const clickedRow = e.target.dataset.row;
     const inputsInRow = section2El.querySelectorAll(`input[data-row="${clickedRow}"]`);
@@ -195,6 +206,7 @@ function checkInput(e) {
     }
 }
 
+// Start timer
 function start(){
     if(!isRunning){
         startTime = Date.now() - elapsedTime;
@@ -203,6 +215,7 @@ function start(){
     };
 };
 
+// Stop timer. Record elapsed time
 function stop(){
     if(isRunning){
         clearInterval(timer);
@@ -211,6 +224,7 @@ function stop(){
     }
 };
 
+// Reset timer and elements to start a fresh game
 function reset(){
     clearInterval(timer);
     startTime = 0;
@@ -252,6 +266,7 @@ function reset(){
     });
 };
 
+// Update timer
 function update(){
     const currentTime = Date.now();
     elapsedTime = currentTime - startTime;
@@ -265,6 +280,7 @@ function update(){
     timerEl.textContent = `${minutes}:${seconds}`;
 };
 
+// Format time in MM:SS format
 function formatTime(time) {
     let minutes = Math.floor(time / (1000 * 60) % 60);
     let seconds = Math.floor(time / 1000 % 60);
@@ -275,4 +291,5 @@ function formatTime(time) {
     return `${minutes}:${seconds}`;
 };
 
+// Start/restart the game when control button is clicked
 controlBtnEl.addEventListener('click', control);
