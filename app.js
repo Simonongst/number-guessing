@@ -32,6 +32,8 @@ function initGame(){
             input.setAttribute('name', 'guess');
             input.setAttribute('maxlength', '1');
             input.setAttribute('class', 'tile');
+            input.setAttribute('autocomplete', 'off');
+            input.setAttribute('inputmode', 'numeric');
             input.dataset.row = i;
             section2El.appendChild(input);
         };
